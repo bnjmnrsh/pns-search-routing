@@ -34,7 +34,13 @@ final class SearchRouting {
 	 * @return void
 	 */
 	public static function apply_editorial_post_types( WP_Query $query ): void {
-		if ( is_admin() || ! $query->is_main_query() || ! $query->is_search() ) {
+		if (
+			is_admin()
+			|| wp_doing_ajax()
+			|| wp_is_json_request()
+			|| ( defined( 'REST_REQUEST' ) && REST_REQUEST )
+			|| ! $query->is_search()
+		) {
 			return;
 		}
 
