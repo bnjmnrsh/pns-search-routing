@@ -40,6 +40,27 @@ final class SearchRouting {
 
 		$query->set( 'post_type', self::get_editorial_post_types() );
 		$query->set( 'post_status', array( 'publish' ) );
+
+		/*
+		 * Exclude any content which has been marked as noindex by Jetpack's SEO module.
+		 * This is a compatibility bridge for any editorial content which opted into
+		 * search but was later marked as noindex by the site administrator.
+		 */
+		$query->set(
+			'meta_query',
+			array(
+				'relation' => 'OR',
+				array(
+					'key'     => 'jetpack_seo_noindex',
+					'compare' => 'NOT EXISTS',
+				),
+				array(
+					'key'     => 'jetpack_seo_noindex',
+					'value'   => '1',
+					'compare' => '!=',
+				),
+			)
+		);
 	}
 
 	/**
