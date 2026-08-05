@@ -5,7 +5,7 @@
 /**
  * Plugin Name: PNS Search Routing
  * Description: Canonical WordPress search routes and editorial search policy for Protests and Suffragettes.
- * Version: 0.1.1
+ * Version: 0.2.0
  * Author: Protests and Suffragettes
  * Text Domain: pns-search-routing
  * Requires at least: 6.5
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'PNS_SEARCH_ROUTING_VERSION', '0.1.1' );
+define( 'PNS_SEARCH_ROUTING_VERSION', '0.2.0' );
 /*
  * x-release-please-end
  */

@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.2.0](https://github.com/bnjmnrsh/pns-search-routing/compare/v0.1.1...v0.2.0) (2026-08-05)
+
+
+### Features
+
+* Add compatibility for Jetpack's SEO noindex in search queries ([cefeda8](https://github.com/bnjmnrsh/pns-search-routing/commit/cefeda8805b01c0e77c5c74bee5fdf1e7a381bef))
+* Enhance search query handling to exclude admin, AJAX, and REST requests ([09adfe4](https://github.com/bnjmnrsh/pns-search-routing/commit/09adfe4fbe75e15b38d91ba3cc3219cce3fbb55c))
+* Exclude hardcoded utility pages from public search results ([757de40](https://github.com/bnjmnrsh/pns-search-routing/commit/757de40a5cff2343d75448c876d91d26ea39b390))
+
 ## [0.1.1](https://github.com/ProtestsAndSuffragettes/pns-search-routing/compare/v0.1.0...v0.1.1) (2026-07-17)
 
 
