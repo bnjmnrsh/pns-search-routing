@@ -40,6 +40,17 @@ final class SearchRouting {
 
 		$query->set( 'post_type', self::get_editorial_post_types() );
 		$query->set( 'post_status', array( 'publish' ) );
+		$query->set(
+			'post__not_in',
+			array_values(
+				array_unique(
+					array_merge(
+						(array) $query->get( 'post__not_in' ),
+						self::get_hardcoded_excluded_post_ids()
+					)
+				)
+			)
+		);
 
 		/*
 		 * Exclude any content which has been marked as noindex by Jetpack's SEO module.
@@ -61,6 +72,28 @@ final class SearchRouting {
 				),
 			)
 		);
+	}
+
+	/**
+	 * Return known utility pages which must never appear in public search.
+	 *
+	 * Resolve by slug so the policy remains portable across environments with
+	 * different database IDs.
+	 *
+	 * @return int[]
+	 */
+	private static function get_hardcoded_excluded_post_ids(): array {
+		$excluded_ids = get_posts(
+			array(
+				'name'           => 'contact-success',
+				'post_type'      => 'page',
+				'post_status'    => 'any',
+				'posts_per_page' => -1,
+				'fields'         => 'ids',
+			)
+		);
+
+		return array_map( 'absint', $excluded_ids );
 	}
 
 	/**
