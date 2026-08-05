@@ -1,0 +1,19 @@
+{
+	"$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+	"bootstrap-sha": "022c21cb9e8237579512c6844aa554cb2761c077",
+	"packages": {
+		".": {
+			"release-type": "php",
+			"package-name": "pns-search-routing",
+			"changelog-path": "CHANGELOG.md",
+			"include-component-in-tag": false,
+			"include-v-in-tag": true,
+			"extra-files": [
+				{
+					"type": "generic",
+					"path": "pns-search-routing.php"
+				}
+			]
+		}
+	}
+}
